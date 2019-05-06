@@ -33,17 +33,22 @@ public class DocumentoController {
 			return servico.findAll();
 		}
 
-//	@RequestMapping(value = "/{nome}", method = RequestMethod.GET)
-//	public @ResponseBody List<Documento> findAllByName(@PathVariable(name = "nome") String nome){
-//		return servico.findAllByName(nome);
-//	}
+	/**
+	 * Buscar por Nome
+	 * @param nome
+	 * @return Documento / List<Documento>
+	 */
+	@RequestMapping(value = "/nome/{nome}", method = RequestMethod.GET)
+	public @ResponseBody List<Documento> findByNome(@PathVariable(value = "nome") String nome){
+		return servico.findByNome(nome);
+	}
 
 	/**
 	 * Buscar por ID
 	 * @param id
 	 * @return Documento
 	 */
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Documento> findById(@PathVariable(name = "id") Long id){
 		return servico.findByID(id);
 	}
@@ -64,9 +69,7 @@ public class DocumentoController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 		public void save(@RequestBody Documento documento) {
-//			Documento doc = (Documento) documento;
 			servico.save(documento);
-//			return "redirect:/home";
 	}
 
 }

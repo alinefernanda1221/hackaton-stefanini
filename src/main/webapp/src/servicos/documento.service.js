@@ -9,16 +9,32 @@ class DocumentoService {
     }
     
     get() {
-        return this.$http.get(this.path);
+    	return this.$http.get(this.path);
     }
+    
 
     getByName(paramPesquisa) {
-    	return this.$http.get(this.path + '/' + paramPesquisa);
+    	return this.$http.get(this.path + '/nome/' + paramPesquisa);
     }    
 
+//    post(dados){
+//    	if(dados.path !== null){
+//    		return this.$http.post(this.path + '/' + dados.path, dados);    		    		
+//    	
+//    	}else{
+//    		return this.$http.post(this.path, dados);    		
+//    	}
+//    }
+
     post(dados){
-    	return this.$http.post(this.path, dados);
+    		return this.$http.post(this.path, dados);    		
+    	}
+
+    postPagina(dados){
+    	path = apiBase + '/pagina';
+    	return this.$http.post(path, dados);    		
     }
+    
     
     deleteById(id){
     	return this.$http.delete(this.path + '/' + id);

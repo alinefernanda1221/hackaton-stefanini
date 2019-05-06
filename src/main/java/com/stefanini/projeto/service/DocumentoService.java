@@ -23,8 +23,8 @@ public class DocumentoService {
 		return (List<Documento>) repo.findAll();
 	}
 	
-	public List<Documento> findAllByName(String nome) {
-		return (List<Documento>) repo.findAll();
+	public List<Documento> findByNome(String nome) {
+		return (List<Documento>) repo.findByNome(nome);
 	}
 	
 	public void save(Documento documento) {

@@ -6,16 +6,20 @@ export default class DocumentoController {
     var vm = this;
     vm.documentos = {};
     vm.resp = null;
-    vm.cadastrarDocumento = null;
     vm.buscarTodos = null;
     vm.pesquisa = null;
     vm.excluir = null;
+    /*Cadastro*/
+    vm.cadastrarDocumento = null;
+    vm.maxSize = 20;
+    vm.cadastrarPagina = null;
     init();
-
-    function init(){
+    
+    function init(){ 
     	
      vm.cadastrarDocumento = function (){
     	 console.log(vm.documento);
+    	 vm.documento.path = null;
     	  documentoService.post(vm.documento)
     	  	.then(function response(resp){ //Retorno positivo
     	  		console.log(resp);
@@ -23,6 +27,16 @@ export default class DocumentoController {
     		  console.log(error);     		  
     	  });
       }	
+
+     vm.cadastrarPagina = function (){
+    	 console.log(vm.pagina);
+    	 documentoService.postPagina(vm.pagina)
+    	 .then(function response(resp){ //Retorno positivo
+    		 console.log(resp);
+    	 }).catch(function (error) { //Retorno negativo -> erro, exceção
+    		 console.log(error);     		  
+    	 });
+     }	
 
      vm.buscarTodos = function (){
     	 documentoService.get()
