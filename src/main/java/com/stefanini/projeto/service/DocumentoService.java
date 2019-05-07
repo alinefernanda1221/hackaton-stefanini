@@ -11,13 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stefanini.projeto.model.Documento;
+import com.stefanini.projeto.model.Pagina;
 import com.stefanini.projeto.repository.DocumentoRepository;
+import com.stefanini.projeto.repository.PaginaRepository;
 
 @Service
 public class DocumentoService {
 	
 	@Autowired
 	private DocumentoRepository repo;
+	private PaginaRepository paginaRepo;
 	
 	public List<Documento> findAll() {
 		return (List<Documento>) repo.findAll();
@@ -37,5 +40,9 @@ public class DocumentoService {
 	
 	public Optional<Documento> findByID(Long id) {
 		return repo.findById(id);
+	}
+	
+	public void salvaPagina(Pagina pagina) {
+		paginaRepo.save(pagina);
 	}
 }

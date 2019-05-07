@@ -31,8 +31,10 @@ class DocumentoService {
     	}
 
     postPagina(dados){
-    	path = apiBase + '/pagina';
-    	return this.$http.post(path, dados);    		
+    	//path = this.path + '/pagina';
+//     	var path = 'http://localhost:8080/pagina';   	
+//    	return this.$http.post(path, dados);    		
+    	return this.$http.post(this.path + '/pagina', dados);    		
     }
     
     

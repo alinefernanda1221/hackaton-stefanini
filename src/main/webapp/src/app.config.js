@@ -21,9 +21,9 @@ export default function routing($stateProvider, $urlRouterProvider) {
 
       let cadastroState = {
     		  name: 'cadastro',
-    		  url: '/documento',
-    		  templateUrl: './modulos/documento/documento.form.html',
-    		  controller: 'DocumentoFormController',
+    		  url: '/documento/cadastro',
+    		  templateUrl: './modulos/documento/cadastro/cadastro.html',
+    		  controller: 'DocumentoCadastroController',
     		  controllerAs: 'vm'
       }
       $stateProvider.state(cadastroState);

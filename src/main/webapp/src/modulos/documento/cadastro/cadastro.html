@@ -1,0 +1,61 @@
+  <div class="jumbotron">
+	
+		<h1>Cadastrar Documento</h1>
+		<hr width="50%" align="left">
+	<div class="row">
+		<form ng-submit="vm.cadastrarDocumento()" novalidate>
+			<div>
+				<div class="row">
+					<div class="col col-md-3">
+						Nome: <input type="text" ng-required="true" ng-model="vm.documento.nome" maxlength="20"/>
+					</div>
+					<div class="col col-md-3">
+						Descricao: <input type="text" ng-model="vm.documento.descricao" ng-maxlength="120"/>
+					</div>
+				</div>
+				<br><hr>
+			</div>
+			<div>
+			<h1>Cadastrar Pagina</h1>
+<!-- 			<form ng-submmit="vm.cadastrarPagina()" novalidade> -->
+				<hr width="50%" align="left">
+					<div class="row">
+						<div class="col col-md-3">
+							Numero: <input type="number" ng-required="true" ng-model="vm.pagina.numero"/>
+						</div>
+						<div class="col col-md-3">
+							Nome: <input type="text" ng-required="true" ng-model="vm.pagina.nome"/>
+							<code></code>
+						</div>
+						<div class="col col-md-3">
+							Conteudo: <textarea ng-model="vm.pagina.conteudo" rows="3" cols="50"></textarea>
+						</div>
+						<div>
+							<input type="button" ng-click="vm.adicionaPagina(vm.pagina)" value="Adiciona Pagina"/>						
+						</div>
+					</div>
+					<br><hr>
+<!-- 					<div class="row text-right"> -->
+<!-- 						<div class="col col-md-1"> -->
+<!-- 							<input class="btn btn-success" type="button" value="Limpar" ng-click="limparTela()"/> -->
+<!-- 						</div> -->
+<!-- 						<div class="col col-md-2"> -->
+<!-- 							<input class="btn btn-success" type="button" value="Cadastrar" ng-click="vm.cadastrarPagina()"/>		 -->
+<!-- 							<input class="btn btn-success" type="submmit" value="Cadastrar"/>		 -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 			</form> -->
+							
+			</div>
+			<br><hr>
+				<div class="row text-right">
+					<div class="col col-md-1">
+						<input class="btn btn-success" type="button" value="Limpar" ng-click="limparTela()"/>
+					</div>
+					<div class="col col-md-2">
+						<input class="btn btn-success" type="submit" value="Cadastrar"/>		
+					</div>
+				</div>
+
+		</form>
+	</div>

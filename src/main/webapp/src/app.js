@@ -10,6 +10,7 @@ import './scss/app.scss';
 import routing from './app.config';
 
 import documento from './modulos/documento/documento.js';
+import cadastro from './modulos/documento/cadastro/cadastro.js';
 import home from './modulos/home/home.js';
 
 angular
@@ -17,6 +18,7 @@ angular
   uirouter,
   blockUI,
   documento,
+  cadastro,
   home
 ])
 .config(routing);
