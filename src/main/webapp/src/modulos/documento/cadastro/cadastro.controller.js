@@ -5,45 +5,49 @@ export default class DocumentoCadastroController {
   constructor(documentoService) {
     var vm = this;
     vm.cadastrarDocumento = null;
-    vm.cadastrarPagina = null;
     vm.adicionaPagina = null;
     vm.paginas = null;
+    vm.status = null;
+    vm.limparTela = null;
     init();
 
     
-    function init(){ 
+    function init(){
+     /*inits*/
      vm.paginas = [];
      vm.adicionaPagina = adicionaPagina;
+     vm.excluirPagina = excluirPagina;
+     vm.limparTela = limparTela;
+     
      vm.cadastrarDocumento = function (){
     	 vm.documento.paginas = [];
     	 vm.documento.paginas = getPaginas();
-    	 console.log(vm.documento);
-    	 vm.documento.path = null;
-    	  documentoService.post(vm.documento)
-    	  	.then(function response(resp){ //Retorno positivo
-    	  		console.log(resp);
-    	  }).catch(function (error) { //Retorno negativo -> erro, exceção
-    		  console.log(error);     		  
+    	 documentoService.post(vm.documento)
+    	 .then(function response(resp){
+    		 vm.status = 'Gravado com sucesso!';
+             limparTela();
+    	 }).catch(function (error) {
+    		 vm.status = '';
+    		 vm.status = error.data.message;
     	  });
-      }	
-
-     vm.cadastrarPagina = function (){
-    	 console.log(vm.pagina);
-    	 documentoService.postPagina(vm.pagina)
-    	 .then(function response(resp){ //Retorno positivo
-    		 console.log(resp);
-    	 }).catch(function (error) { //Retorno negativo -> erro, exceção
-    		 console.log(error);     		  
-    	 });
-     }
+      }
      
      function adicionaPagina(pagina) { //Adiciona pagina num Array de Object
 		vm.paginas.push(pagina);
+     }
+
+     function excluirPagina(pagina) { //Remove pagina do Array
+    	 var index = vm.paginas.indexOf(pagina);
+    	 vm.paginas.splice(index, 1);
      }
      
      function getPaginas(){
     	 return vm.paginas;
      }
+     
+     function limparTela() {
+		 document.getElementById("formCadastro").reset(); // Reseta Form
+	 }
 
   }
  }

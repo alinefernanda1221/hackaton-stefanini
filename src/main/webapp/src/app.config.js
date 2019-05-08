@@ -27,6 +27,16 @@ export default function routing($stateProvider, $urlRouterProvider) {
     		  controllerAs: 'vm'
       }
       $stateProvider.state(cadastroState);
+
+      let edicaoState = {
+    		  name: 'edicao',
+    		  url: '/documento/edicao',
+    		  templateUrl: './modulos/documento/edicao/edicao.html',
+    		  controller: 'DocumentoEdicaoController',
+    		  controllerAs: 'vm',
+    		  params : { documento : null }
+      }
+      $stateProvider.state(edicaoState);
       
       $urlRouterProvider.otherwise('/home')  
 }

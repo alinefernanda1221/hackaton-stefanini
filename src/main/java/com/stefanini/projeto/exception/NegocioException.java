@@ -1,10 +1,10 @@
 package com.stefanini.projeto.exception;
 
-public class TreinaException extends Exception {
+public class NegocioException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public TreinaException(String mensagem) {
+	public NegocioException(String mensagem) {
 		super(mensagem);
 	}
 

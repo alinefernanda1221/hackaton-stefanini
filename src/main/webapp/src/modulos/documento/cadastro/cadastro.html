@@ -1,61 +1,63 @@
-  <div class="jumbotron">
-	
-		<h1>Cadastrar Documento</h1>
-		<hr width="50%" align="left">
+<div class="jumbotron">
+	<h1>Cadastrar Documento</h1>
+	<h3 align="center">{{vm.status}}</h3>
+	<hr width="50%" align="left">
 	<div class="row">
-		<form ng-submit="vm.cadastrarDocumento()" novalidate>
+		<form ng-submit="vm.cadastrarDocumento()" novalidate id="formCadastro">
 			<div>
 				<div class="row">
 					<div class="col col-md-3">
-						Nome: <input type="text" ng-required="true" ng-model="vm.documento.nome" maxlength="20"/>
+						Nome: <input type="text" ng-required="true"	ng-model="vm.documento.nome" />
 					</div>
 					<div class="col col-md-3">
-						Descricao: <input type="text" ng-model="vm.documento.descricao" ng-maxlength="120"/>
+						Descricao: <input type="text" ng-model="vm.documento.descricao" ng-maxlength="120" />
 					</div>
 				</div>
 				<br><hr>
 			</div>
 			<div>
-			<h1>Cadastrar Pagina</h1>
-<!-- 			<form ng-submmit="vm.cadastrarPagina()" novalidade> -->
+				<h1>Cadastrar Pagina</h1>
 				<hr width="50%" align="left">
-					<div class="row">
-						<div class="col col-md-3">
-							Numero: <input type="number" ng-required="true" ng-model="vm.pagina.numero"/>
-						</div>
-						<div class="col col-md-3">
-							Nome: <input type="text" ng-required="true" ng-model="vm.pagina.nome"/>
-							<code></code>
-						</div>
-						<div class="col col-md-3">
-							Conteudo: <textarea ng-model="vm.pagina.conteudo" rows="3" cols="50"></textarea>
-						</div>
-						<div>
-							<input type="button" ng-click="vm.adicionaPagina(vm.pagina)" value="Adiciona Pagina"/>						
-						</div>
+				<div class="row">
+					<div class="col col-md-3">
+						Nome: <input type="text" ng-required="true"
+							ng-model="vm.pagina.nome" />
+						<code></code>
 					</div>
-					<br><hr>
-<!-- 					<div class="row text-right"> -->
-<!-- 						<div class="col col-md-1"> -->
-<!-- 							<input class="btn btn-success" type="button" value="Limpar" ng-click="limparTela()"/> -->
-<!-- 						</div> -->
-<!-- 						<div class="col col-md-2"> -->
-<!-- 							<input class="btn btn-success" type="button" value="Cadastrar" ng-click="vm.cadastrarPagina()"/>		 -->
-<!-- 							<input class="btn btn-success" type="submmit" value="Cadastrar"/>		 -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 			</form> -->
-							
-			</div>
-			<br><hr>
-				<div class="row text-right">
-					<div class="col col-md-1">
-						<input class="btn btn-success" type="button" value="Limpar" ng-click="limparTela()"/>
-					</div>
-					<div class="col col-md-2">
-						<input class="btn btn-success" type="submit" value="Cadastrar"/>		
+					<div class="col col-md-3">
+						Conteudo:
+						<textarea ng-model="vm.pagina.conteudo" rows="3" cols="50"></textarea>
 					</div>
 				</div>
-
+				<div class="row">
+					<div class="col">
+						<input class="btn btn-success" type="button" ng-click="vm.adicionaPagina(vm.pagina)" value="Adiciona Pagina" />
+					</div>
+				</div>
+			</div><br>
+			<table class="table table-hover">
+				<thead ng-if="vm.paginas">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Pagina Nome</th>
+						<th scope="col">Ações</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat='pagina in vm.paginas track by $index'>
+					<td><b>{{$index+1}}</b></td>
+					<td>{{pagina.nome}}</td>
+					<td><input class="btn btn-danger" type="button"	value="Excluir" ng-click="vm.excluirPagina(pagina)"></td>
+				</tbody>
+			</table>
+			<br><hr>
+			<div class="row text-right">
+				<div class="col col-md-1">
+					<input class="btn btn-success" type="button" value="Limpar"	ng-click="vm.limparTela()" />
+				</div>
+				<div class="col col-md-2">
+					<input class="btn btn-success" type="submit" value="Cadastrar" />
+				</div>
+			</div>
 		</form>
 	</div>
+</div>	

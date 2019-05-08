@@ -10,30 +10,17 @@ class DocumentoService {
     
     get() {
     	return this.$http.get(this.path);
-    }
-    
+    }   
 
     getByName(paramPesquisa) {
     	return this.$http.get(this.path + '/nome/' + paramPesquisa);
     }    
 
-//    post(dados){
-//    	if(dados.path !== null){
-//    		return this.$http.post(this.path + '/' + dados.path, dados);    		    		
-//    	
-//    	}else{
-//    		return this.$http.post(this.path, dados);    		
-//    	}
-//    }
-
     post(dados){
     		return this.$http.post(this.path, dados);    		
-    	}
+    }
 
-    postPagina(dados){
-    	//path = this.path + '/pagina';
-//     	var path = 'http://localhost:8080/pagina';   	
-//    	return this.$http.post(path, dados);    		
+    postPagina(dados){		
     	return this.$http.post(this.path + '/pagina', dados);    		
     }
     
@@ -42,6 +29,9 @@ class DocumentoService {
     	return this.$http.delete(this.path + '/' + id);
     }
     
+    patch(dados){
+    	return this.$http.patch(this.path, dados);    		
+    }
 }
 
 export default angular.module('services.documento-service', [])

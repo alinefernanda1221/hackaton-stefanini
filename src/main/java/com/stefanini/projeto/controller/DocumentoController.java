@@ -1,6 +1,5 @@
 package com.stefanini.projeto.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stefanini.projeto.exception.NegocioException;
 import com.stefanini.projeto.model.Documento;
-import com.stefanini.projeto.model.Pagina;
 import com.stefanini.projeto.service.DocumentoService;
 
-@CrossOrigin /*Aceita requisições de endereços locais*/
+/**
+ * @author Aline Carvalho
+ *
+ */
+@CrossOrigin /*Aceita requisicoes de enderecos locais*/
 @RestController
 @RequestMapping(value = "/documento", produces = MediaType.APPLICATION_JSON_VALUE)
 public class DocumentoController {
@@ -67,11 +70,20 @@ public class DocumentoController {
 	/**
 	 * Criar documento
 	 * @param documento
-	 * @return
+	 * @throws NegocioException 
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-		public void save(@RequestBody Documento documento) {
+		public void save(@RequestBody Documento documento) throws NegocioException {
 			servico.save(documento);
+	}
+
+	/**
+	 * Alterar documento
+	 * @param documento
+	 */
+	@RequestMapping(method = RequestMethod.PATCH)
+	public void update(@RequestBody Documento documento) {
+		servico.update(documento);
 	}
 
 }

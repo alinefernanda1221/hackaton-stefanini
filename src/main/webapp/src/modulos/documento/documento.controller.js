@@ -2,7 +2,7 @@ import { inherit } from "@uirouter/core";
 
 export default class DocumentoController {
 
-  constructor(documentoService) {
+  constructor(documentoService, $state) {
     var vm = this;
     vm.documentos = {};
     vm.resp = null;
@@ -13,45 +13,38 @@ export default class DocumentoController {
     vm.cadastrarDocumento = null;
     vm.maxSize = 20;
     vm.cadastrarPagina = null;
+    vm.editar = null;
+    
     init();
     
     function init(){ 
-    	
-     vm.cadastrarDocumento = function (){
-    	 console.log(vm.documento);
-    	 vm.documento.path = null;
-    	  documentoService.post(vm.documento)
-    	  	.then(function response(resp){ //Retorno positivo
-    	  		console.log(resp);
-    	  }).catch(function (error) { //Retorno negativo -> erro, exceção
-    		  console.log(error);     		  
-    	  });
-      }	
+    vm.editar = editarPagina;
 
      vm.cadastrarPagina = function (){
     	 console.log(vm.pagina);
     	 documentoService.postPagina(vm.pagina)
-    	 .then(function response(resp){ //Retorno positivo
+    	 .then(function response(resp){
     		 console.log(resp);
-    	 }).catch(function (error) { //Retorno negativo -> erro, exceção
+    	 }).catch(function (error) {
     		 console.log(error);     		  
     	 });
      }	
 
      vm.buscarTodos = function (){
     	 documentoService.get()
-    	   .then(function response(resp){ //Retorno positivo
+    	   .then(function response(resp){
     		   vm.documentos = resp.data;
-    	 }).catch(function (error) { //Retorno negativo -> erro, exceção
+    	 }).catch(function (error) {
     		 console.log(error);     		  
     	 });	
      } 
 
      vm.buscarPorNome = function (){
     	 documentoService.getByName(vm.pesquisa)
-    	 .then(function response(resp){ //Retorno positivo
+    	 .then(function response(resp){
     		 vm.documentos = resp.data;
-    	 }).catch(function (error) { //Retorno negativo -> erro, exceção
+    		 console.log(resp);     		  
+    	 }).catch(function (error) {
     		 console.log(error);     		  
     	 });	
      }
@@ -64,9 +57,14 @@ export default class DocumentoController {
 			console.log(error);
 		});
 	}
-  
+
+     function editarPagina(doc) { //Vai para o router página passando o doc como param de edicao :)
+    	 $state.go('edicao', {
+    		documento : doc 
+    	 });
+     }       
     
   }
  }
 }//Fim classe
-DocumentoController.$inject = ['documentoService'];
+DocumentoController.$inject = ['documentoService', '$state'];

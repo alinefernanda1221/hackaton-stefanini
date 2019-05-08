@@ -39,6 +39,39 @@ public class Pagina implements Serializable{
 		this.numeroPagina = numeroPagina;
 		this.documento = documento;
 	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
+
+	public Integer getNumeroPagina() {
+		return numeroPagina;
+	}
+
+	public void setNumeroPagina(Integer numeroPagina) {
+		this.numeroPagina = numeroPagina;
+	}
+
+	public Documento getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(Documento documento) {
+		this.documento = documento;
+	}
 
 	@Override
 	public int hashCode() {

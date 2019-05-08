@@ -17,8 +17,8 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Documento</th>
-          <th scope="col">PÃ¡ginas</th>
-          <th scope="col">AÃ§Ãµes</th>
+          <th scope="col">Páginas</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody ng-repeat='documento in vm.documentos' ng-if="vm.documentos !== null">
@@ -28,7 +28,7 @@
             <td>{{documento.paginas.length}}</td>
 <!--             <td>{{documento.nome}}</td> -->
             <td>
-            	<input class="btn btn-success"type="button" value="Editar" ng-click="vm.editar(documento.id)">
+            	<input class="btn btn-success"type="button" value="Editar" ng-click="vm.editar(documento)">
             	<input class="btn btn-danger"type="button" value="Excluir" ng-click="vm.excluir(documento.id)">
             </td>
 <!--         </tr> -->

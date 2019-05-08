@@ -11,6 +11,7 @@ import routing from './app.config';
 
 import documento from './modulos/documento/documento.js';
 import cadastro from './modulos/documento/cadastro/cadastro.js';
+import edicao from './modulos/documento/edicao/edicao.js';
 import home from './modulos/home/home.js';
 
 angular
@@ -19,6 +20,7 @@ angular
   blockUI,
   documento,
   cadastro,
+  edicao,
   home
 ])
 .config(routing);
